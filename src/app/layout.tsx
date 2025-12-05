@@ -298,7 +298,7 @@ export default function RootLayout({
       { '@type': 'City', name: 'Massagno' },
       { '@type': 'City', name: 'Cadro' },
       { '@type': 'City', name: 'Sonvico' },
-      { '@type': 'City', name': 'Canobbio' },
+      { '@type': 'City', name: 'Canobbio' },
       { '@type': 'City', name: 'Comano' },
       { '@type': 'City', name: 'Tesserete' },
       { '@type': 'City', name: 'Sorengo' },
