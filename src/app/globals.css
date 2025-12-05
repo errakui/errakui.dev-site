@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply box-border;
+  }
+  
+  body {
+    @apply font-helvetica antialiased bg-swiss-white text-swiss-black;
+    font-feature-settings: "kern" 1, "liga" 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-helvetica font-bold tracking-tight leading-none;
+  }
+}
+
+@layer utilities {
+  .swiss-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 2rem;
+  }
+
+  .swiss-line {
+    @apply relative;
+  }
+
+  .swiss-line::before {
+    content: '';
+    @apply absolute left-0 top-0 w-1 h-full bg-swiss-red;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .hover-swiss {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .hover-swiss:hover {
+    @apply transform translate-x-2;
+  }
+}
+
+/* Swiss Typography */
+.swiss-title {
+  font-size: clamp(3rem, 8vw, 8rem);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+}
+
+.swiss-subtitle {
+  font-size: clamp(1.5rem, 3vw, 3rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.swiss-number {
+  font-family: 'Courier New', monospace;
+  font-weight: 700;
+  font-size: clamp(4rem, 10vw, 12rem);
+  line-height: 0.9;
+}
+
+/* Animations */
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-in {
+  animation: slide-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 1s ease-out forwards;
+}
+
