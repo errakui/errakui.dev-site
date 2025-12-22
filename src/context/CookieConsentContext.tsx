@@ -112,26 +112,26 @@ export function useCookieConsent() {
 
 // Funzioni helper per tracking
 function initializeAnalytics() {
-  // Google Analytics (esempio - sostituisci con il tuo ID)
-  // const GA_ID = 'G-XXXXXXXXXX'
+  // Google Analytics
+  const GA_ID = 'G-WBSP7CY48N'
   
   // Script Google Analytics
-  // if (!document.getElementById('ga-script')) {
-  //   const script = document.createElement('script')
-  //   script.id = 'ga-script'
-  //   script.async = true
-  //   script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`
-  //   document.head.appendChild(script)
-  //   
-  //   const script2 = document.createElement('script')
-  //   script2.innerHTML = `
-  //     window.dataLayer = window.dataLayer || [];
-  //     function gtag(){dataLayer.push(arguments);}
-  //     gtag('js', new Date());
-  //     gtag('config', '${GA_ID}', { 'anonymize_ip': true });
-  //   `
-  //   document.head.appendChild(script2)
-  // }
+  if (!document.getElementById('ga-script')) {
+    const script = document.createElement('script')
+    script.id = 'ga-script'
+    script.async = true
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`
+    document.head.appendChild(script)
+    
+    const script2 = document.createElement('script')
+    script2.innerHTML = `
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '${GA_ID}', { 'anonymize_ip': true });
+    `
+    document.head.appendChild(script2)
+  }
   
   console.log('✅ Analytics inizializzato')
 }
