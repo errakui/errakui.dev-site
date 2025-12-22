@@ -1,3 +1,10 @@
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Cookie Policy',
+  description: 'Informativa sui cookie utilizzati da ERRAKUI.DEV. Gestione dei cookie secondo nLPD e GDPR.',
+}
+
 export default function CookiePolicyPage() {
   return (
     <div className="bg-white pt-32 pb-20 px-6 md:px-12">

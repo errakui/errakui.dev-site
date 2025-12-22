@@ -164,6 +164,72 @@ export const metadata: Metadata = {
     'agenzia web Svizzera', 'web agency Switzerland',
     'app development Switzerland', 'mobile app Schweiz',
     
+    // ========== ZURIGO ==========
+    'software house Zürich', 'software house Zurigo',
+    'sviluppo software Zürich', 'sviluppo software Zurigo',
+    'agenzia web Zürich', 'web agency Zürich',
+    'sviluppatore Zürich', 'programmatore Zurigo',
+    'app mobile Zürich', 'siti web Zürich',
+    'software development Zürich', 'web developer Zürich',
+    'software house Winterthur', 'sviluppo software Winterthur',
+    
+    // ========== BERNA ==========
+    'software house Bern', 'software house Berna',
+    'sviluppo software Bern', 'sviluppo software Berna',
+    'agenzia web Bern', 'web agency Bern',
+    'sviluppatore Bern', 'programmatore Berna',
+    'app mobile Bern', 'siti web Bern',
+    'software development Bern', 'web developer Bern',
+    'software house Biel', 'software house Bienne',
+    'software house Thun', 'sviluppo software Thun',
+    
+    // ========== GINEVRA ==========
+    'software house Genève', 'software house Ginevra',
+    'sviluppo software Genève', 'sviluppo software Ginevra',
+    'agenzia web Genève', 'web agency Genève',
+    'sviluppatore Genève', 'programmatore Ginevra',
+    'app mobile Genève', 'siti web Genève',
+    'software development Genève', 'web developer Genève',
+    
+    // ========== BASILEA ==========
+    'software house Basel', 'software house Basilea',
+    'sviluppo software Basel', 'sviluppo software Basilea',
+    'agenzia web Basel', 'web agency Basel',
+    'sviluppatore Basel', 'programmatore Basilea',
+    'app mobile Basel', 'siti web Basel',
+    'software development Basel', 'web developer Basel',
+    
+    // ========== LOSANNA ==========
+    'software house Lausanne', 'software house Losanna',
+    'sviluppo software Lausanne', 'sviluppo software Losanna',
+    'agenzia web Lausanne', 'web agency Lausanne',
+    'sviluppatore Lausanne', 'programmatore Losanna',
+    'app mobile Lausanne', 'siti web Lausanne',
+    'software development Lausanne', 'web developer Lausanne',
+    'software house Vevey', 'sviluppo software Vevey',
+    
+    // ========== LUCERNA ==========
+    'software house Luzern', 'software house Lucerna',
+    'sviluppo software Luzern', 'sviluppo software Lucerna',
+    'agenzia web Luzern', 'web agency Luzern',
+    'sviluppatore Luzern', 'programmatore Lucerna',
+    'app mobile Luzern', 'siti web Luzern',
+    
+    // ========== SAN GALLO ==========
+    'software house St. Gallen', 'software house San Gallo',
+    'sviluppo software St. Gallen', 'sviluppo software San Gallo',
+    'agenzia web St. Gallen', 'web agency St. Gallen',
+    'sviluppatore St. Gallen', 'programmatore San Gallo',
+    
+    // ========== ALTRE CITTÀ SVIZZERE ==========
+    'software house Zug', 'software house Zugo',
+    'software house Fribourg', 'software house Friburgo',
+    'software house Schaffhausen',
+    'software house Chur', 'software house Coira',
+    'software house Neuchâtel',
+    'software house La Chaux-de-Fonds',
+    'software house Köniz',
+    
     // ========== QUALITÀ E DIFFERENZIATORI ==========
     'software house premium Lugano', 'sviluppo software professionale Ticino',
     'software house affidabile Lugano', 'agenzia web certificata Ticino',
@@ -241,6 +307,22 @@ export const metadata: Metadata = {
   verification: {
     google: 'your-google-verification-code',
     // Aggiungi dopo la registrazione su Google Search Console
+  },
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+    other: [
+      {
+        rel: 'manifest',
+        url: '/site.webmanifest',
+      },
+    ],
   },
 }
 
@@ -461,6 +543,13 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
         <link rel="canonical" href="https://errakui.dev" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <meta name="theme-color" content="#FF0000" />
+        <meta name="msapplication-TileColor" content="#000000" />
         <meta name="geo.region" content="CH-TI" />
         <meta name="geo.placename" content="Lugano" />
         <meta name="geo.position" content="46.0037;8.9511" />

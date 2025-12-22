@@ -1,3 +1,10 @@
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Termini e Condizioni',
+  description: 'Termini e condizioni di utilizzo dei servizi di ERRAKUI.DEV. Software house a Lugano, Svizzera.',
+}
+
 export default function TerminiCondizioniPage() {
   return (
     <div className="bg-white pt-32 pb-20 px-6 md:px-12">

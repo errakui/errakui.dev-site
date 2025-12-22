@@ -16,6 +16,7 @@ export default function Footer() {
     { label: 'About', href: '/about' },
     { label: 'Portfolio', href: '/portfolio' },
     { label: 'Servizi', href: '/servizi' },
+    { label: 'Città', href: '/citta' },
     { label: 'Contatti', href: '/contatti' },
   ]
 

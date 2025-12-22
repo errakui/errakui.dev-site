@@ -1,3 +1,10 @@
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Privacy Policy',
+  description: 'Informativa sulla privacy di ERRAKUI.DEV. Trattamento dei dati personali secondo nLPD e GDPR.',
+}
+
 export default function PrivacyPolicyPage() {
   return (
     <div className="bg-white pt-32 pb-20 px-6 md:px-12">
