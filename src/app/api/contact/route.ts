@@ -94,7 +94,7 @@ export async function POST(request: NextRequest) {
 
     const resend = new Resend(process.env.RESEND_API_KEY)
     const { data, error } = await resend.emails.send({
-      from: 'ERRAKUI.DEV <contatti@errakui.dev>',
+      from: 'ERRAKUI.DEV <info@errakui.dev>',
       to: 'info@errakui.dev',
       replyTo: email,
       subject: `Nuovo contatto da ${name}${company ? ` - ${company}` : ''}`,
