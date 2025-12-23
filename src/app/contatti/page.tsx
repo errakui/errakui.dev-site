@@ -53,21 +53,42 @@ export default function ContattiPage() {
     setErrors({})
     setIsSubmitting(true)
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000))
-    
-    alert('✅ Grazie per averci contattato! Ti risponderemo entro 24 ore.')
-    setIsSubmitting(false)
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      company: '',
-      service: '',
-      budget: '',
-      message: '',
-      acceptPrivacy: false,
-    })
+    try {
+      // Invia dati al server
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Errore durante l\'invio')
+      }
+
+      // Successo!
+      alert('✅ Grazie per averci contattato! Ti risponderemo entro 24 ore.')
+      
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        company: '',
+        service: '',
+        budget: '',
+        message: '',
+        acceptPrivacy: false,
+      })
+    } catch (error) {
+      console.error('Errore invio form:', error)
+      alert('❌ Errore durante l\'invio. Riprova o contattaci direttamente a info@errakui.dev')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -349,6 +370,7 @@ export default function ContattiPage() {
                     className="w-full px-6 py-4 border-2 border-swiss-gray-300 focus:border-swiss-red focus:outline-none transition-colors bg-white"
                   >
                     <option value="">Seleziona un range</option>
+                    <option value="0-10k">CHF 0 - 10'000</option>
                     <option value="10-25k">CHF 10'000 - 25'000</option>
                     <option value="25-50k">CHF 25'000 - 50'000</option>
                     <option value="50-100k">CHF 50'000 - 100'000</option>
