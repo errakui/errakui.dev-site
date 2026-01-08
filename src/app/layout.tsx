@@ -486,11 +486,6 @@ export default function RootLayout({
       { '@type': 'Country', name: 'Schweiz' },
       { '@type': 'Country', name: 'Svizzera' },
     ],
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      reviewCount: '50',
-    },
     openingHoursSpecification: [
       {
         '@type': 'OpeningHoursSpecification',
