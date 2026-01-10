@@ -70,19 +70,19 @@ export default function ContattiPage() {
       }
 
       // Successo!
-      alert('✅ Grazie per averci contattato! Ti risponderemo entro 24 ore.')
+    alert('✅ Grazie per averci contattato! Ti risponderemo entro 24 ore.')
       
       // Reset form
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        company: '',
-        service: '',
-        budget: '',
-        message: '',
-        acceptPrivacy: false,
-      })
+    setFormData({
+      name: '',
+      email: '',
+      phone: '',
+      company: '',
+      service: '',
+      budget: '',
+      message: '',
+      acceptPrivacy: false,
+    })
     } catch (error) {
       console.error('Errore invio form:', error)
       alert('❌ Errore durante l\'invio. Riprova o contattaci direttamente a info@errakui.dev')

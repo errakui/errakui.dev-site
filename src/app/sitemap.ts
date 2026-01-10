@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next'
 import { swissCities } from '@/data/cities'
+import { articles } from '@/app/blog/articles'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://errakui.dev'
@@ -36,6 +37,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: currentDate,
       changeFrequency: 'monthly' as const,
       priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/blog`,
+      lastModified: currentDate,
+      changeFrequency: 'daily' as const,
+      priority: 0.9,
     },
     {
       url: `${baseUrl}/privacy-policy`,
@@ -81,6 +88,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   })
 
-  return [...mainPages, ...cityPages]
+  // Pagine blog - articoli
+  const blogPages = articles.map((article) => {
+    // Priorità basata sulla categoria
+    let priority = 0.7
+    if (article.category === 'news') {
+      priority = 0.8
+    } else if (article.category === 'tutorial') {
+      priority = 0.75
+    } else if (article.category === 'servizi') {
+      priority = 0.7
+    }
+
+    return {
+      url: `${baseUrl}/blog/${article.slug}`,
+      lastModified: new Date(article.date),
+      changeFrequency: 'monthly' as const,
+      priority,
+    }
+  })
+
+  return [...mainPages, ...cityPages, ...blogPages]
 }
 
