@@ -22,9 +22,9 @@ export default function BlogPage() {
 
   const getCategoryColor = (category: Article['category']): string => {
     switch (category) {
-      case 'news': return 'bg-blue-500'
-      case 'tutorial': return 'bg-green-500'
-      case 'servizi': return 'bg-red-500'
+      case 'news': return 'bg-swiss-black'
+      case 'tutorial': return 'bg-swiss-red'
+      case 'servizi': return 'bg-swiss-gray-600'
     }
   }
 
@@ -37,139 +37,186 @@ export default function BlogPage() {
   }
 
   return (
-    <div className="min-h-screen bg-white text-black pt-32 pb-20">
-      <div className="max-w-6xl mx-auto px-6">
-        {/* Header */}
-        <div className="mb-16">
-          <p className="text-xs tracking-[0.3em] text-gray-500 mb-4">
-            BLOG / INSIGHTS
-          </p>
-          <h1 className="text-5xl md:text-7xl font-black mb-6">
-            BLOG<span className="text-red-500">.</span>
-          </h1>
-          <p className="text-lg text-gray-600 max-w-2xl">
-            News tech, tutorial pratici e guide per digitalizzare il tuo business. 
-            Articoli veloci da leggere, massimo valore.
-          </p>
-        </div>
+    <div className="bg-white pt-32">
+      {/* Hero Section */}
+      <section className="px-6 md:px-12 py-20 bg-swiss-black text-white">
+        <div className="max-w-[1800px] mx-auto">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <div className="flex items-center space-x-4 mb-6">
+                <div className="w-16 h-1 bg-swiss-red" />
+                <span className="text-sm tracking-[0.3em] text-swiss-gray-400 font-bold">
+                  INSIGHTS & RISORSE
+                </span>
+              </div>
+              <h1 className="text-6xl md:text-8xl font-bold mb-6 leading-none">
+                BLOG
+                <span className="text-swiss-red">.</span>
+              </h1>
+              <p className="text-xl text-swiss-gray-400 leading-relaxed">
+                Approfondimenti sul mondo tech, guide pratiche e strategie 
+                per la trasformazione digitale del tuo business.
+              </p>
+            </div>
 
-        {/* Filters */}
-        <div className="flex flex-wrap gap-3 mb-12 border-b border-gray-200 pb-6">
-          {filters.map(filter => (
-            <button
-              key={filter.id}
-              onClick={() => setActiveFilter(filter.id)}
-              className={`px-4 py-2 text-xs tracking-wider transition-all ${
-                activeFilter === filter.id
-                  ? 'bg-black text-white'
-                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-              }`}
-            >
-              {filter.label} ({filter.count})
-            </button>
-          ))}
-        </div>
-
-        {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
-          <div className="text-center p-6 border border-gray-200">
-            <p className="text-4xl font-black">{articles.length}</p>
-            <p className="text-xs tracking-wider text-gray-500 mt-1">ARTICOLI</p>
-          </div>
-          <div className="text-center p-6 border border-gray-200">
-            <p className="text-4xl font-black text-blue-500">10</p>
-            <p className="text-xs tracking-wider text-gray-500 mt-1">NEWS</p>
-          </div>
-          <div className="text-center p-6 border border-gray-200">
-            <p className="text-4xl font-black text-green-500">10</p>
-            <p className="text-xs tracking-wider text-gray-500 mt-1">TUTORIAL</p>
-          </div>
-          <div className="text-center p-6 border border-gray-200">
-            <p className="text-4xl font-black text-red-500">20</p>
-            <p className="text-xs tracking-wider text-gray-500 mt-1">GUIDE SERVIZI</p>
+            <div className="grid grid-cols-2 gap-4">
+              {[
+                { value: articles.length.toString(), label: 'ARTICOLI', desc: 'PUBBLICATI' },
+                { value: '10', label: 'NEWS', desc: 'TECH' },
+                { value: '10', label: 'TUTORIAL', desc: 'PRATICI' },
+                { value: '20', label: 'GUIDE', desc: 'BUSINESS' },
+              ].map((item, index) => (
+                <div
+                  key={index}
+                  className="aspect-square border-2 border-swiss-gray-600 hover:border-swiss-red hover:bg-swiss-red group cursor-pointer transition-all duration-300 flex flex-col items-center justify-center"
+                >
+                  <div className="text-5xl font-bold mb-2 group-hover:scale-110 transition-transform">
+                    {item.value}
+                  </div>
+                  <div className="text-xs tracking-wider opacity-70">
+                    {item.label}
+                  </div>
+                  <div className="text-xs tracking-wider opacity-50">
+                    {item.desc}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
+      </section>
 
-        {/* Articles Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredArticles.map((article, index) => (
-            <Link 
-              key={article.slug} 
-              href={`/blog/${article.slug}`}
-              className="group block"
-            >
-              <article className="border border-gray-200 hover:border-black transition-all h-full">
-                {/* Category & Date Bar */}
-                <div className="flex items-center justify-between p-4 border-b border-gray-100">
-                  <span className={`px-2 py-1 text-[10px] tracking-wider text-white ${getCategoryColor(article.category)}`}>
+      {/* Filters */}
+      <section className="py-8 px-6 md:px-12 border-b border-swiss-gray-300">
+        <div className="max-w-[1800px] mx-auto">
+          <div className="flex flex-wrap gap-2">
+            {filters.map((filter, index) => (
+              <button
+                key={filter.id}
+                onClick={() => setActiveFilter(filter.id)}
+                className={`px-8 py-4 font-bold transition-all flex items-center ${
+                  activeFilter === filter.id
+                    ? 'bg-swiss-red text-white'
+                    : 'bg-swiss-gray-100 hover:bg-swiss-gray-200'
+                }`}
+              >
+                <span className="text-xs font-mono mr-3 opacity-60">
+                  {(index + 1).toString().padStart(2, '0')}
+                </span>
+                {filter.label}
+                <span className="ml-2 text-xs opacity-60">({filter.count})</span>
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Articles Grid */}
+      <section className="py-20 px-6 md:px-12">
+        <div className="max-w-[1800px] mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-1 bg-swiss-black">
+            {filteredArticles.map((article, index) => (
+              <Link 
+                key={article.slug} 
+                href={`/blog/${article.slug}`}
+                className="bg-white p-8 hover:bg-swiss-red hover:text-white group transition-all duration-500 cursor-pointer"
+              >
+                {/* Category & Number */}
+                <div className="flex items-center justify-between mb-6">
+                  <span className={`px-3 py-1 text-xs tracking-wider text-white ${getCategoryColor(article.category)}`}>
                     {getCategoryLabel(article.category)}
                   </span>
-                  <span className="text-[10px] text-gray-400 tracking-wider">
+                  <span className="text-4xl font-mono text-swiss-gray-300 group-hover:text-white/30 transition-colors">
+                    {(index + 1).toString().padStart(2, '0')}
+                  </span>
+                </div>
+                
+                {/* Title */}
+                <h2 className="text-xl font-bold mb-4 leading-tight group-hover:text-white transition-colors">
+                  {article.title}
+                </h2>
+                
+                {/* Excerpt */}
+                <p className="text-swiss-gray-600 group-hover:text-white/80 mb-6 line-clamp-3 transition-colors">
+                  {article.excerpt}
+                </p>
+                
+                {/* Footer */}
+                <div className="flex items-center justify-between pt-4 border-t border-swiss-gray-200 group-hover:border-white/30 transition-colors">
+                  <span className="text-xs tracking-wider text-swiss-gray-500 group-hover:text-white/60 transition-colors">
                     {new Date(article.date).toLocaleDateString('it-IT', { 
                       day: '2-digit', 
                       month: 'short', 
                       year: 'numeric' 
                     }).toUpperCase()}
                   </span>
+                  <span className="text-xs tracking-wider text-swiss-gray-500 group-hover:text-white/60 transition-colors">
+                    {article.readTime} MIN
+                  </span>
                 </div>
-                
-                {/* Content */}
-                <div className="p-6">
-                  <h2 className="text-lg font-bold mb-3 group-hover:text-red-500 transition-colors leading-tight">
-                    {article.title}
-                  </h2>
-                  <p className="text-sm text-gray-600 mb-4 line-clamp-2">
-                    {article.excerpt}
-                  </p>
-                  
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {article.tags.slice(0, 3).map(tag => (
-                      <span key={tag} className="text-[10px] px-2 py-1 bg-gray-100 text-gray-500">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  
-                  {/* Read time */}
-                  <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-                    <span className="text-[10px] tracking-wider text-gray-400">
-                      {article.readTime} MIN LETTURA
-                    </span>
-                    <span className="text-xs font-bold group-hover:translate-x-1 transition-transform">
-                      LEGGI →
-                    </span>
-                  </div>
-                </div>
-              </article>
-            </Link>
-          ))}
-        </div>
-
-        {/* Empty State */}
-        {filteredArticles.length === 0 && (
-          <div className="text-center py-20">
-            <p className="text-gray-500">Nessun articolo trovato per questa categoria.</p>
+              </Link>
+            ))}
           </div>
-        )}
-
-        {/* CTA */}
-        <div className="mt-20 p-12 bg-black text-white text-center">
-          <h2 className="text-3xl font-black mb-4">
-            HAI UN PROGETTO?<span className="text-red-500">.</span>
-          </h2>
-          <p className="text-gray-400 mb-8 max-w-xl mx-auto">
-            Trasformiamo le tue idee in soluzioni digitali concrete. 
-            Contattaci per una consulenza gratuita.
-          </p>
-          <Link 
-            href="/contatti"
-            className="inline-block bg-red-500 text-white px-8 py-4 text-sm tracking-wider hover:bg-red-600 transition-colors"
-          >
-            CONTATTACI
-          </Link>
         </div>
-      </div>
+      </section>
+
+      {/* Empty State */}
+      {filteredArticles.length === 0 && (
+        <div className="text-center py-20">
+          <p className="text-swiss-gray-500">Nessun articolo trovato per questa categoria.</p>
+        </div>
+      )}
+
+      {/* CTA Section */}
+      <section className="py-32 px-6 md:px-12 bg-swiss-red text-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="w-full h-full" style={{
+            backgroundImage: `
+              linear-gradient(to right, white 1px, transparent 1px),
+              linear-gradient(to bottom, white 1px, transparent 1px)
+            `,
+            backgroundSize: '60px 60px'
+          }} />
+        </div>
+
+        <div className="max-w-[1800px] mx-auto relative z-10">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <h2 className="text-5xl md:text-6xl font-bold mb-6">
+                HAI UN PROGETTO
+                <br />
+                IN MENTE?
+              </h2>
+              <p className="text-2xl mb-8 opacity-90">
+                Parliamone insieme e troviamo la soluzione perfetta per le tue esigenze
+              </p>
+              <Link
+                href="/contatti"
+                className="inline-block px-12 py-6 bg-white text-swiss-red font-bold text-lg hover:bg-swiss-black hover:text-white transition-colors"
+              >
+                CONTATTACI ORA
+              </Link>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              {[
+                { label: 'CONSULENZA', desc: 'GRATUITA' },
+                { label: 'PREVENTIVO', desc: 'IN 24H' },
+                { label: 'QUALITÀ', desc: '100%' },
+                { label: 'SUPPORTO', desc: '24/7' },
+              ].map((item, index) => (
+                <div
+                  key={index}
+                  className="aspect-square border-2 border-white/30 hover:border-white hover:bg-white hover:text-swiss-red flex flex-col items-center justify-center text-center p-6 transition-all group cursor-pointer"
+                >
+                  <div className="text-4xl font-bold mb-2">{item.desc}</div>
+                  <div className="text-sm tracking-wider">{item.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   )
 }
