@@ -44,21 +44,19 @@ export async function generateMetadata({
   }
 }
 
-function getCategoryColor(category: Article['category']) {
+function getCategoryColor(category: Article['category']): string {
   switch (category) {
     case 'news': return 'bg-blue-500'
     case 'tutorial': return 'bg-green-500'
     case 'servizi': return 'bg-red-500'
-    default: return 'bg-gray-500'
   }
 }
 
-function getCategoryLabel(category: Article['category']) {
+function getCategoryLabel(category: Article['category']): string {
   switch (category) {
     case 'news': return 'NEWS'
     case 'tutorial': return 'TUTORIAL'
     case 'servizi': return 'SERVIZI'
-    default: return category.toUpperCase()
   }
 }
 
