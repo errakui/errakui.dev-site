@@ -22,7 +22,8 @@ export default function Header() {
     { href: '/servizi', label: 'SERVIZI', number: '02' },
     { href: '/about', label: 'ABOUT', number: '03' },
     { href: '/portfolio', label: 'PORTFOLIO', number: '04' },
-    { href: '/contatti', label: 'CONTATTI', number: '05' },
+    { href: '/blog', label: 'BLOG', number: '05' },
+    { href: '/contatti', label: 'CONTATTI', number: '06' },
   ]
 
   return (
