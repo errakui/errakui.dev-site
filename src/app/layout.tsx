@@ -12,8 +12,8 @@ import { CookieConsentProvider } from '@/context/CookieConsentContext'
 export const metadata: Metadata = {
   metadataBase: new URL('https://errakui.dev'),
   title: {
-    default: 'ERRAKUI.DEV — Software House Lugano | Sviluppo Software Svizzera',
-    template: '%s | ERRAKUI.DEV — Software House Lugano'
+    default: 'ERRAKUI.DEV | Software House Lugano | Svizzera',
+    template: '%s | ERRAKUI.DEV Software House Lugano'
   },
   description: 'Software house a Lugano, Svizzera. Sviluppo siti web, app mobile, software gestionali e soluzioni personalizzate. Qualità svizzera, P.IVA CHE-478.305.574.',
   keywords: [
